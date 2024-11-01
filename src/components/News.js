@@ -23,7 +23,7 @@ export class News extends Component {
         <h2>News:- Top Headlines India</h2>
         <div className="row">
             {this.state.articles.map((e)=>{
-                return <div className="col-md-4">
+                return <div className="col-md-4" key={e.url}>
                              <NewsItems title={e.title} descraption= {e.descraption} imageUrl={e.image} newsUrl={e.url}/>
                     </div>
             })}
