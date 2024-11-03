@@ -17,17 +17,27 @@ export class News extends Component {
         // console.log(response);
         this.setState({articles:response.articles})
     }
+    pagePrev = ()=>{
+      // console.log('Previous Page')
+    }
+    pageNext = ()=>{
+      // console.log('Next Page')
+    }
   render() {
     return (
       <div className='container my-2'>
-        <h2>News:- Top Headlines India</h2>
+        <h2>News:- Today Top Headlines India</h2>
         <div className="row">
             {this.state.articles.map((e)=>{
                 return <div className="col-md-4" key={e.url}>
                              <NewsItems title={e.title} descraption= {e.descraption} imageUrl={e.image} newsUrl={e.url}/>
                     </div>
             })}
-        </div>    
+        </div>
+             <div className='container d-flex justify-content-between'>
+                  <button disabled type="button" onClick={this.pagePrev} className="btn btn-dark">&larr; Previous</button>
+                  <button disabled type="button" onClick={this.pageNext} className="btn btn-dark">Next &rarr;</button>
+             </div>    
       </div>
     )
   }
