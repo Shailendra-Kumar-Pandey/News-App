@@ -17,30 +17,38 @@ export class News extends Component {
     category: PropTypes.string,
     lang :PropTypes.string,
   }
+
+  capitalizerFstLetter= (string)=> {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
     
-    constructor (){
-        super()
+    constructor (props){
+        super(props)
         this.state = {
             articles : [],
             loading  : false,
         }
+        document.title = `${this.capitalizerFstLetter(this.props.category)} - News-App`
     }
    async componentDidMount(){
-        let url = `https://gnews.io/api/v4/top-headlines?category=${this.props.category}&lang=${this.props.lang}&country=${this.props.country}&max=10&apikey=b73842219062446de118899d3359f40c&page=1`;
+        this.props.setProgress(10);
+        let url = `https://gnews.io/api/v4/top-headlines?category=${this.props.category}&lang=${this.props.lang}&country=${this.props.country}&max=10&apikey=${this.props.apiKey}`;
         this.setState({loading : true});
         let data = await fetch(url);
+        this.props.setProgress(40);
         let response = await data.json();
-        // console.log(response);
+        this.props.setProgress(70);
         this.setState({
           articles:response.articles,
           loading : false
         })
+        this.props.setProgress(100);
     }
   render() {
     return (
       <div className="container my-2">
         <div className="text-center " style={{margin:'20px 0px'}}>
-        <h1>News:- Today Top {this.props.category} Headlines India</h1>
+        <h1>News:- Today Top {this.capitalizerFstLetter(this.props.category)} Headlines India</h1>
         {this.state.loading && <Spinner/>}
         </div>
         <div className="row">
