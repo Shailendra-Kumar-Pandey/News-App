@@ -6,7 +6,7 @@ export class NewsItems extends Component {
     return (
       <div>
         <div className="container mx-2">
-        <div className="card " style={{backgroundColor:'#dcdce540',border:'2.5px solid transparent'}} >
+        <div className="card " style={{backgroundColor: 'rgb(21 21 45 / 63%)',border: '2.5px solid transparent',color: 'ghostwhite'}} >
              <div style={{display:"flex",justifyContent:"flex-end",position:"absolute",right:"0"}}>
               <span className="badge rounded-pill bg-danger">{source}</span>
               </div> 

@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import NewsItems from './NewsItems'
 import PropTypes from 'prop-types'
 import Spinner from './Spinner'
-document.body.style.backgroundColor = " #2b30351f";
+// document.body.style.backgroundColor = " #2b30351f";
+document.body.style.background = "url('./logo512.png') no-repeat center center/cover fixed";
+
 
 export class News extends Component {
 
@@ -48,7 +50,7 @@ export class News extends Component {
     return (
       <div className="container my-2">
         <div className="text-center " style={{margin:'20px 0px'}}>
-        <h1>News:- Today Top {this.capitalizerFstLetter(this.props.category)} Headlines India</h1>
+        <h1 style={{color:'#6b6b7a'}}>News:- Today Top {this.capitalizerFstLetter(this.props.category)} Headlines India</h1>
         {this.state.loading && <Spinner/>}
         </div>
         <div className="row">
